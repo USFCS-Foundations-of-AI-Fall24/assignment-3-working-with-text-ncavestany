@@ -25,5 +25,13 @@ def euclidean_distance(d1, d2) :
 
 ## You implement this.
 def cosine_similarity(d1,d2) :
-    pass
+    common_words = d1.tokens.keys() & d2.tokens.keys()
+    
+    numerator = sum(d1.tokens[word] * d2.tokens[word] for word in common_words)
+    
+    d1_magnitude = sqrt(sum(d1.tokens[word]**2 for word in d1.tokens.keys()))
+    d2_magnitude = sqrt(sum(d2.tokens[word]**2 for word in d2.tokens.keys()))
+    denominator = d1_magnitude * d2_magnitude
+    
+    return numerator/denominator
 
