@@ -31,4 +31,4 @@ class Test(TestCase):
         d2 = Document(true_class='pos')
         d2.add_tokens(['cat', 'dog', 'fish'])
         print(cosine_similarity(d,d2))
-        self.assertAlmostEqual(cosine_similarity(d,d2),1,4)
+        self.assertAlmostEqual(cosine_similarity(d,d2),1,4, msg="cosine_similarity(d,d2) should be 1 but got "+str(cosine_similarity(d,d2)))
