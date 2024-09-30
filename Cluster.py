@@ -19,7 +19,16 @@ class Cluster :
 
     ## You do this.
     def calculate_centroid(self):
-        pass
+        centroid = Document()
+        
+        for member in self.members :
+            for token in member.tokens :
+                centroid.tokens[token] += member.tokens[token]
+        
+        for token in centroid.tokens :
+            centroid.tokens[token] /= len(self.members)
+        
+        self.centroid = centroid
 
 
 # Call like so: k_means(2, ['pos','neg'], positive_docs + negative_docs)
